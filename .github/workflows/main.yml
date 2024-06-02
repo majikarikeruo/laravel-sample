@@ -15,8 +15,8 @@ jobs:
     - name: Deploy to Sakura Rental Server
       env:
         SAKURA_PRIVATE_KEY: ${{ secrets.SAKURA_PRIVATE_KEY }}
-        SAKURA_HOST: your_sakura_server_host
-        SAKURA_USER: your_sakura_server_user
+        SAKURA_HOST: ${{ secrets.SAKURA_HOST }}
+        SAKURA_USER: ${{ secrets.SAKURA_USER }}
       run: |
         echo "$SAKURA_PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -i private_key ${SAKURA_USER}@${SAKURA_HOST} '
