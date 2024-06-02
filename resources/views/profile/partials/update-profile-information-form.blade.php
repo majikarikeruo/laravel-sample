@@ -28,7 +28,6 @@
             <x-input-label for="image" :value="__('Profile Image')" />
             <input id="image" name="image" type="file" class="mt-1 block w-full" accept="image/*">
             <x-input-error class="mt-2" :messages="$errors->get('image')" />
-            {{$user}}
 
             @if ($user->image_url)
 
