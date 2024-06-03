@@ -21,9 +21,4 @@ jobs:
         echo "$SAKURA_PRIVATE_KEY" | base64 --decode > private_key && chmod 600 private_key
         cat private_key
         file private_key
-        ssh -v -o StrictHostKeyChecking=no -i private_key ${SAKURA_USER}@${SAKURA_HOST} '
-          cd /home/castero/laravel11-test &&
-          git pull origin main &&
-          composer install --no-dev &&
-          php artisan migrate --force
-        '
+        ssh -v -o StrictHostKeyChecking=no -i private_key ${SAKURA_USER}@${SAKURA_HOST} 'cd /home/castero/laravel11-test && git pull origin main && composer install --no-dev && php artisan migrate --force'
