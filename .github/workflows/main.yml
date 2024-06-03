@@ -14,11 +14,11 @@ jobs:
 
     - name: Decode and set up SSH key
       env:
-        SAKURA_PRIVATE_KEY_BASE64: ${{ secrets.SAKURA_PRIVATE_KEY_BASE64 }}
+        SAKURA_PRIVATE_KEY: ${{ secrets.SAKURA_PRIVATE_KEY }}
         SAKURA_HOST: ${{ secrets.SAKURA_HOST }}
         SAKURA_USER: ${{ secrets.SAKURA_USER }}
       run: |
-        echo "$SAKURA_PRIVATE_KEY_BASE64" | base64 --decode > private_key && chmod 600 private_key
+        echo "$SAKURA_PRIVATE_KEY" | base64 --decode > private_key && chmod 600 private_key
         cat private_key
         file private_key
         ssh -v -o StrictHostKeyChecking=no -i private_key ${SAKURA_USER}@${SAKURA_HOST} '
