@@ -14,9 +14,9 @@ jobs:
 
     - name: Set up SSH key
       env:
-        SAKURA_PRIVATE_KEY: ${{ secrets.SAKURA_PRIVATE_KEY }}
+        SAKURA_PRIVATE_KEY_BASE64: ${{ secrets.SAKURA_PRIVATE_KEY_BASE64 }}
       run: |
-        echo "$SAKURA_PRIVATE_KEY" | base64 --decode > private_key
+        echo "$SAKURA_PRIVATE_KEY_BASE64" | base64 --decode > private_key
         chmod 600 private_key
         eval $(ssh-agent -s)
         ssh-add private_key
@@ -26,4 +26,4 @@ jobs:
         SAKURA_HOST: ${{ secrets.SAKURA_HOST }}
         SAKURA_USER: ${{ secrets.SAKURA_USER }}
       run: |
-        ssh -v -o StrictHostKeyChecking=no ${SAKURA_USER}@${SAKURA_HOST} "cd /home/castero/laravel11-test && git pull origin main && composer install --no-dev && php artisan migrate --force"
+        ssh -v -o StrictHostKeyChecking=no -i private_key ${SAKURA_USER}@${SAKURA_HOST} "cd /home/***/laravel11-test && git pull origin main && composer install --no-dev && php artisan migrate --force"
