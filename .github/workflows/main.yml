@@ -1,0 +1,29 @@
+name: Deploy to Sakura Rental Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up SSH key
+      env:
+        SAKURA_PRIVATE_KEY: ${{ secrets.SAKURA_PRIVATE_KEY }}
+      run: |
+        echo "$SAKURA_PRIVATE_KEY" | base64 --decode > private_key
+        chmod 600 private_key
+        eval $(ssh-agent -s)
+        ssh-add private_key
+
+    - name: Deploy to Sakura Rental Server
+      env:
+        SAKURA_HOST: ${{ secrets.SAKURA_HOST }}
+        SAKURA_USER: ${{ secrets.SAKURA_USER }}
+      run: |
+        ssh -v -o StrictHostKeyChecking=no -i private_key ${SAKURA_USER}@${SAKURA_HOST} "cd /home/castero/laravel11-test && git pull origin main && php composer.phar install --no-dev && php artisan migrate --force"
