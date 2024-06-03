@@ -26,3 +26,7 @@ jobs:
           composer install --no-dev &&
           php artisan migrate --force
         '
+    - name: Check private_key content
+      run: cat private_key
+    - name: Check private_key file type
+      run: file private_key
