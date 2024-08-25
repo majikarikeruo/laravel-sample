@@ -100,7 +100,7 @@ class IconController extends Controller
 
     public function edit($id)
     {
-        $icon = Icon::  ($id);
+        $icon = Icon::find($id);
 
         if ($icon->user_id !== Auth::id()) {
             return redirect()->route('dashboard')->with('error', 'アクセス権限がありません。');
@@ -120,8 +120,6 @@ class IconController extends Controller
         ]);
 
         try {
-
-
             /**
              * findOrDailはは該当のものがない場合は404が返る
              *
