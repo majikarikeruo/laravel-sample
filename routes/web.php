@@ -4,6 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\IconController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('/dashboard', [IconController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
