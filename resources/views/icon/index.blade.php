@@ -21,8 +21,8 @@
 
         <div class="bg-white rounded-lg shadow overflow-hidden">
             <ul class="divide-y divide-gray-200">
-                @foreach ( $icons as $icon )
-                @include('icon.partials.icon-item')
+                @foreach ($icons as $icon)
+                    @include('icon.partials.icon-item')
                 @endforeach
             </ul>
         </div>
