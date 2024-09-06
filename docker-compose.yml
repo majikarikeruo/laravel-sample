@@ -51,6 +51,18 @@ services:
                 - "-p${DB_PASSWORD}"
             retries: 3
             timeout: 5s
+    phpmyadmin:
+        image: "phpmyadmin/phpmyadmin"
+        links:
+            - "mysql:mysql"
+        ports:
+            - 8080:80
+        environment: # 環境変数
+            PMA_HOST: mysql # mysqlコンテナがホストだよ
+            PMA_USER: "${DB_USERNAME}" # ユーザ名
+            PMA_PASSWORD: "${DB_PASSWORD}" # パスワード
+        networks:
+            - sail # sail の中で動作してるよ
 networks:
     sail:
         driver: bridge

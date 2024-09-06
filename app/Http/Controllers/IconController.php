@@ -43,9 +43,8 @@ class IconController extends Controller
 
     public function create()
     {
-        $is_edit = false;
 
-        return view('icon.detail', compact('is_edit'));
+        return view('icon.detail');
     }
 
     public function store(Request $request)
@@ -106,9 +105,7 @@ class IconController extends Controller
             return redirect()->route('dashboard')->with('error', 'アクセス権限がありません。');
         }
 
-        $is_edit = true;
-
-        return view('icon.detail', compact('icon', 'is_edit'));
+        return view('icon.detail', compact('icon'));
     }
 
     public function update(Request $request, $id)
