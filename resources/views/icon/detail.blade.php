@@ -20,7 +20,7 @@
                         <p class="mt-1 text-sm text-gray-600">クリックまたはドラッグ＆ドロップで新しい画像をアップロード</p>
                     </div>
                 </div>
-                <div id="imagePreviewContainer" class="mt-4 hidden">
+                <div id="imagePreviewContainer" class="mt-4">
                     <h2 class="text-sm font-bold">現在のアイコン画像</h2>
                     <div id="imagePreview">
                         @if(isset($icon->image_path))
