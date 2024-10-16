@@ -35,7 +35,7 @@ class IconController extends Controller
          * whereなどを書いたのはSQLを入力しただけの状態
          * getやpaginateによって初めてSQLが実行される
          */
-        $icons = $query->where('user_id', Auth::id())->paginate(10);
+        $icons = $query->where('user_id', Auth::id())->paginate(5);
 
 
         return view('icon.index', compact('icons'));
@@ -44,7 +44,7 @@ class IconController extends Controller
     public function create()
     {
 
-        return view('icon.detail');
+        return view('icon.create');
     }
 
     public function store(Request $request)
@@ -128,7 +128,6 @@ class IconController extends Controller
                 return redirect()->route('dashboard')->with('error', 'アクセス権限がありません。');
             }
 
-            $icon->image_path = $request->image_path;
             $icon->title = $request->title;
             $icon->description = $request->description;
 

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="bg-white p-8 container rounded-lg shadow-xl w-full max-w-xl mx-auto">
+    <div class="bg-white px-4 py-8 container rounded-lg shadow-xl w-full max-w-xl mx-auto">
         <h1 class="text-2xl font-bold mb-8 text-center text-gray-800">
             アイコン情報編集
         </h1>
@@ -20,20 +20,21 @@
                         <p class="mt-1 text-sm text-gray-600">クリックまたはドラッグ＆ドロップで新しい画像をアップロード</p>
                     </div>
                 </div>
-                <div id="imagePreviewContainer" class="mt-4">
+                <div id="imagePreviewContainer" class="mt-4 ">
                     <h2 class="text-sm font-bold">現在のアイコン画像</h2>
                     <div id="imagePreview">
-                        @if(isset($icon->image_path))
-                        <img src="{{ asset('storage/' . $icon->image_path) }}" alt="アイコン1" class="mt-2 max-w-full h-auto">
+                        @if (isset($icon->image_path))
+                            <img src="{{ asset('storage/' . $icon->image_path) }}" alt="アイコン1"
+                                class="mt-2 max-w-full h-auto">
                         @endif
                     </div>
-
                 </div>
             </div>
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="title">
                     タイトル
                 </label>
+                <p class="text-sm mb-3 text-gray-600">アイコンにつけるタイトルを設定してください。</p>
                 <input
                     class="shadow appearance-none border rounded w-full py-2 px-3 border-gray-200 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
                     id="title" type="text" name="title" value="{{ old('title', $icon->title) }}" required>
@@ -42,21 +43,20 @@
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
                     説明
                 </label>
+                <p class="text-sm mb-3 text-gray-600">アイコンの説明を設定してください。</p>
                 <textarea
                     class="shadow appearance-none border rounded w-full py-2 px-3 border-gray-200 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    id="description" name="description" rows="4">{{old('description', $icon->description)}}</textarea>
+                    id="description" name="description" rows="4">{{ old('description', $icon->description) }}</textarea>
             </div>
-            <div class="flex items-center justify-center">
+            <div class="flex flex-col gap-8 items-center justify-center">
                 <button
                     class="w-60 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-bold py-4 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105"
                     type="submit">
                     更新する
-                </button>
+                </button> <a href="{{ route('dashboard') }}"
+                    class="w-60 text-black text-center border font-bold py-4 px-4 rounded-full focus:outline-none focus:shadow-outline transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">一覧に戻る</a>
+
             </div>
         </form>
-
-        <div class="mt-10">
-            <a href="{{ route('dashboard') }}" class="text-blue-500 text-sm hover:text-blue-600 font-medium">一覧に戻る</a>
-        </div>
     </div>
 </x-app-layout>

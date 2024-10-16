@@ -30,7 +30,7 @@
         @endisset
 
         <!-- Page Content -->
-        <main class="py-8">
+        <main class="px-2 md:px-0 py-8">
             {{ $slot }}
         </main>
     </div>

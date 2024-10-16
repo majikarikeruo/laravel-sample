@@ -1,6 +1,13 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+    <div class="max-w-[640px] min-h-screen container mx-auto px-10 content-center">
+
+       <div class="mb-10 text-center"> 
+            <h1 class="text-2xl font-bold">新規登録</h1>
+        </div>
+
+
+        <form method="POST" action="{{ route('register') }}">
+            @csrf
 
         <!-- Name -->
         <div>
@@ -47,6 +54,7 @@
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
-        </div>
-    </form>
+            </div>
+        </form>
+    </div>
 </x-guest-layout>
