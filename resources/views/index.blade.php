@@ -2,7 +2,7 @@
 
     <body>
         <header class="header">
-            <div class="p-3 flex  flex-col justify-center items-center">
+            <div class="p-3 flex flex-col justify-center items-center">
                 <h1 class="mb-2 text-xs font-bold text-gray-800">コスゲリアン.com | 無料で楽しく利用できる素材サイト</h1>
                 <p class="level-item column logo has-text-centered">
                     <a href="{{ route('index') }}" class="flex">
