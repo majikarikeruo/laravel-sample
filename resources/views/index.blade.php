@@ -5,7 +5,7 @@
             <div class="p-3 flex  flex-col justify-center items-center">
                 <h1 class="mb-2 text-xs font-bold text-gray-800">コスゲリアン.com | 無料で楽しく利用できる素材サイト</h1>
                 <p class="level-item column logo has-text-centered">
-                    <a href="https://kosugelian.net" class="flex">
+                    <a href="{{ route('index') }}" class="flex">
                         <img src="{{ asset('images/stamp18.png') }}" alt="" width="80">
                         <img src="{{ asset('images/logo.svg') }}" alt="コスゲリアン" width="160" class="typo-logo">
                     </a>
