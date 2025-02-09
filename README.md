@@ -12,3 +12,9 @@
 -   CSS と JS
 -   モデルとマイグレーション
 -   blade の include
+
+
+
+
+2月9日
+readme.mdを更新
